@@ -1,0 +1,35 @@
+<%= form_with model: @donation_address, url: donations_path, local: true do |f| %>
+  <%= render 'error_messages', model: @donation_address %>
+  <h1>住所</h1>
+  <div class="field">
+   <%= f.label :postal_code, "郵便番号（ハイフンを含む）" %>
+   <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label :prefecture, "都道府県" %>
+    <%= f.collection_select :prefecture, Prefecture.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :city, "市町村（任意）" %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :house_number, "番地（任意）" %>
+    <%= f.text_field :house_number %>
+  </div>
+  <div class="field">
+    <%= f.label :building_name, "建物名（任意）" %>
+    <%= f.text_field :building_name %>
+  </div>
+
+  <h1>寄付</h1>
+  <div class="field">
+    <%= f.label :price, "金額（¥1~1,000,000）" %>
+    <%= "¥" %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "寄付する" %>
+  </div>
+<% end %>
